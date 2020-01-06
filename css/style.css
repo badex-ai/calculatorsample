@@ -1,0 +1,219 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  font-family: "lato", sans-serif;
+  font-weight: 400;
+  margin: 0; }
+
+.container {
+  background-image: linear-gradient(to right bottom, rgba(111, 189, 213, 0.11), rgba(73, 40, 180, 0.96));
+  height: 100%;
+  width: 100%;
+  padding: 2rem; }
+
+.calc-box {
+  background-color: #363434;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0 auto;
+  width: 28%;
+  height: 65rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-bottom: 3px solid black; }
+
+.calc-output {
+  margin: 0 auto;
+  height: 8rem;
+  width: 95%;
+  background-color: red;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.87); }
+  .calc-output__history {
+    overflow: hidden;
+    height: 40%;
+    background-color: white;
+    border-bottom: 1px;
+    text-align: right;
+    font-size: 2rem;
+    position: relative; }
+    .calc-output__history::after {
+      overflow: hidden;
+      content: " ";
+      width: 2px;
+      height: 80%;
+      top: 2px;
+      right: 0;
+      background-color: black;
+      position: absolute;
+      animation: blink 1s linear infinite alternate; }
+  .calc-output__output-result {
+    height: 60%;
+    background-color: orange;
+    text-align: right;
+    font-size: 3rem; }
+
+@keyframes blink {
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.calc-inputs__memory-btns {
+  align-items: center;
+  margin-top: 2rem;
+  justify-content: space-evenly;
+  display: flex; }
+
+.button-leftbra {
+  width: 2rem;
+  display: inline-block;
+  border: none;
+  height: 5rem;
+  cursor: pointer;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px; }
+  .button-leftbra:hover {
+    transform: translateY(0.08rem); }
+  .button-leftbra:focus {
+    outline: 0; }
+
+.button-rightbra {
+  width: 2rem;
+  display: inline-block;
+  border: none;
+  height: 5rem;
+  cursor: pointer;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px; }
+  .button-rightbra:hover {
+    transform: translateY(0.08rem); }
+  .button-rightbra:focus {
+    outline: 0; }
+
+.calc-inputs__operators {
+  display: flex;
+  margin-top: 3rem; }
+
+.left-case {
+  flex: 0 0 75%; }
+
+.right-case {
+  flex: 0 0 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.box {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-evenly; }
+
+.mem-btn-delete {
+  border-radius: 10px;
+  width: 4rem;
+  display: inline-block;
+  text-transform: uppercase;
+  height: 3.5rem;
+  border: none;
+  cursor: pointer; }
+  .mem-btn-delete:hover {
+    transform: translateY(0.08rem); }
+  .mem-btn-delete:focus {
+    outline: 0; }
+
+.mem-btn-total {
+  border-radius: 10px;
+  width: 4rem;
+  display: inline-block;
+  text-transform: uppercase;
+  height: 3.5rem;
+  border: none;
+  cursor: pointer; }
+  .mem-btn-total:hover {
+    transform: translateY(0.08rem); }
+  .mem-btn-total:focus {
+    outline: 0; }
+
+.dir-left {
+  width: 4rem;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  display: inline-block;
+  border: none;
+  height: 3.5rem;
+  cursor: pointer; }
+  .dir-left:hover {
+    transform: translateY(0.08rem); }
+  .dir-left:focus {
+    outline: 0; }
+
+.dir-right {
+  width: 4rem;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  display: inline-block;
+  border: none;
+  height: 3.5rem;
+  cursor: pointer; }
+  .dir-right:hover {
+    transform: translateY(0.08rem); }
+  .dir-right:focus {
+    outline: 0; }
+
+.button-right {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  border: none;
+  margin: 1.5rem;
+  cursor: pointer; }
+  .button-right:hover {
+    transform: translateY(0.08rem); }
+  .button-right:focus {
+    outline: 0; }
+
+.dir-equal {
+  width: 4rem;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  display: inline-block;
+  border: none;
+  height: 3.5rem;
+  cursor: pointer; }
+  .dir-equal:focus {
+    outline: 0; }
+
+.button-equal {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  border: none;
+  margin: 0.6rem;
+  cursor: pointer; }
+  .button-equal:hover {
+    transform: translateY(0.08rem); }
+  .button-equal:focus {
+    outline: 0; }
+
+.button-left {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  border: none;
+  margin: 1rem;
+  cursor: pointer; }
+  .button-left:hover {
+    transform: translateY(0.08rem); }
+  .button-left:focus {
+    outline: 0; }
