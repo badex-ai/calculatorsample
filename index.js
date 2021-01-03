@@ -1,15 +1,17 @@
 //-----------------UI Controller
 let UIcontroller = (function(){
     let domStrings = {
-        historyOutput: ".calc-output__history",
-        mainOutput: ".calc-output__output-result",
-        numbersBtn:"button-left",
-        arithmeticBtn:"button-right",
-        equalBtn:".button-equal",
-        clearBtn:".mem-btn-total",
-        deleteBtn:".mem-btn-delete",
-        leftBraBtn:".button-leftbra",
-        rightBraBtn:".button-rightbra"
+        historyOutput: ".calc-output__text",
+        mainOutput: ".calc-output__output-resultTxt",
+        numbersBtn:"button button__left",
+        arithmeticBtn:"button button__right",
+        equalBtn:".button__equal",
+        clearBtn:".clear",
+        deleteBtn:".del",
+        leftBraBtn:".btn__leftbra",
+        rightBraBtn:".btn__rightbra",
+        moveLeftBtn : ".dir__left",
+        moveRightBtn: ".dir__right"
 
     }
     
@@ -27,7 +29,9 @@ let UIcontroller = (function(){
 
 
 
-           if(document.querySelector(domStrings.historyOutput).innerText===""){ document.querySelector(domStrings.historyOutput).innerText= value}
+           if(document.querySelector(domStrings.historyOutput).innerText===""){
+              document.querySelector(domStrings.historyOutput).innerText= value
+            }
             else document.querySelector(domStrings.historyOutput).innerText += value;
         
         },
@@ -41,6 +45,17 @@ let UIcontroller = (function(){
         displayOutput: function(val){
           return document.querySelector(domStrings.mainOutput).textContent=val;
         },
+        moveInputLeft(){
+          let outputFrame = document.querySelector(domStrings.historyOutput);
+          console.log('pressed')
+          outputFrame.style.transform = 'translateX(10px)'
+        },
+        moveInputRight(){
+          let outputFrame = document.querySelector(domStrings.historyOutput);
+          console.log('pressed')
+          outputFrame.style.transform = 'translateX(-10px)'
+        }
+        
 
     }
 
@@ -103,7 +118,7 @@ let calcController=(function(){
 let controller= (function(UIctrl,calcCtrl){
     let numbers,mthSymb,equal,DOMStrings,clearMemory,deleteNum,leftbra,rightbra;
 
-    DOMStrings= UIctrl.getDomStrings();
+    DOMStrings = UIctrl.getDomStrings();
    
     //-------------event handler for numbers
     numbers = document.getElementsByClassName(DOMStrings.numbersBtn);
@@ -138,7 +153,7 @@ let controller= (function(UIctrl,calcCtrl){
     
     for(let i=0; i<mthSymb.length;i++){
         mthSymb[i].addEventListener('click', function()
-      {let inputOperator =this.id;
+      {let inputOperator = this.id;
       console.log(inputOperator);
 
       
@@ -188,6 +203,7 @@ let controller= (function(UIctrl,calcCtrl){
     }
     );
 
+    //Deleting 
     deleteNum= document.querySelector(DOMStrings.deleteBtn);
     deleteNum.addEventListener('click', function()
     {
@@ -201,6 +217,19 @@ let controller= (function(UIctrl,calcCtrl){
       UIctrl.updateHistory(output)
     })
 
+
+    //Event Handler For Scrolling left or Right
+      moveSmall = document.querySelector(DOMStrings.moveLeftBtn);
+      moveSmall.addEventListener('click',function(){
+        console.log('start')
+        UIcontroller.moveInputLeft()
+      })
+
+      moveSmall = document.querySelector(DOMStrings.moveRightBtn);
+      moveSmall.addEventListener('click',function(){
+        console.log('start')
+        UIcontroller.moveInputRight()
+      })
 
 
 }
