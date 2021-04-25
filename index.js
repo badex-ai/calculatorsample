@@ -27,7 +27,7 @@ let UIcontroller = (function(){
         updateHistory:function(value){
           // document.querySelector(domStrings.historyOutput).innerText= value;
 
-
+          
 
            if(document.querySelector(domStrings.historyOutput).innerText===""){
               document.querySelector(domStrings.historyOutput).innerText= value
@@ -45,15 +45,47 @@ let UIcontroller = (function(){
         displayOutput: function(val){
           return document.querySelector(domStrings.mainOutput).textContent=val;
         },
+
         moveInputLeft(){
           let outputFrame = document.querySelector(domStrings.historyOutput);
-          console.log('pressed')
-          outputFrame.style.transform = 'translateX(10px)'
+        //  console.log('pressed');
+        let matrix = window.getComputedStyle(outputFrame).transform;
+        const matrixValues = matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
+        let translateValue = parseInt(matrixValues[4]);
+       // console.log(translateValue);
+         //console.log(outputFrame.currentStyle) ;
+        // let frameWidth =  window.getComputedStyle(textOutput).width;
+         if(translateValue == 0){return}
+         else{ outputFrame.style.transform = `translateX(${translateValue + 10}px)`}
+         
         },
+
         moveInputRight(){
+           let textOutputWidth= document.querySelector(domStrings.historyOutput).scrollWidth;
+          let textOutput= document.querySelector(domStrings.historyOutput);
           let outputFrame = document.querySelector(domStrings.historyOutput);
-          console.log('pressed')
-          outputFrame.style.transform = 'translateX(-10px)'
+         // console.log('pressed');
+          let matrix = window.getComputedStyle(outputFrame).transform;
+         let frameWidth =  window.getComputedStyle(textOutput).width;
+         
+         // let txtOutputWidth = window.getComputedStyle(textOutput).width;
+          const matrixValues = matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
+          let translateValue = parseInt(matrixValues[4]) ;
+        //  let matrix = window.getComputedStyle(outputFrame).transform;
+         // console.log(transLateValue);
+         let outerFrame = parseInt(frameWidth.split("p")[0]);
+         
+         //console.log(outerFrame);
+         //console.log(frameWidth);
+        // console.log(textOutputWidth);
+         let overflowdifference= textOutputWidth - outerFrame;
+        //  console.log(overflowdifference);
+        //  console.log((translateValue));
+          if (Math.abs(translateValue) > overflowdifference){return};
+          if (textOutputWidth > outerFrame){ outputFrame.style.transform = `translateX(${translateValue + (-10)}px)`}
+         //console.log(outputFrame.currentStyle) ;
+
+          //outputFrame.style.transform = 'translateX(-10px)'
         }
         
 

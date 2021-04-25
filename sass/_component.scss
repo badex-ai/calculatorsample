@@ -12,28 +12,11 @@
 
 
 }
-.moveLeft{
-    animation-name: move;   
-    animation-duration: 0.1s;
-}
+$bp-largest: 75em; //1200px / default 16
+$bp-large: 62.5em;  //1000px
+$bp-medium: 50em;       //800px
+$bp-small: 37.5em;  //600px
 
-
-.moveRight{
-    animation-name: move;   
-    animation-duration: 0.1s;
-}
-
-@keyframes move {
-    0% {
-        transform: translateX(0);
-    }
-
-
-    100% {
-        transform: translateX(10px);;
-        background-color: #EF5350;
-    }
-}
 
 
 *,
@@ -45,6 +28,18 @@
 html{
     box-sizing:border-box;
     font-size: 62.5%; 
+
+    @media only screen and (max-width: $bp-largest){
+        font-size: 100%;
+    }
+
+    @media only screen and (max-width: $bp-largest){
+        font-size: 90%;
+    }
+
+    @media only screen and (max-width: $bp-small){
+        font-size: 56.25%;
+    }
     
 }
 
@@ -55,6 +50,9 @@ body{
     // padding: 0;
  
 }
+
+//RESPONSIVE BREAKPOINTS// WE USUALLY USE EMS FOR FONT BREAKPOINTS
+
 
 .container{
     display:grid;
@@ -67,6 +65,21 @@ body{
     // width: 100%;
     
     padding:2rem;
+
+    @media only screen and (max-width: $bp-largest){
+        grid-template-columns: [con1-start ] 1fr [con1-end calc-start ] minmax(29rem, 55vw ) [calc-end con2-start] 1fr[con2-end ] ;
+    }
+
+    @media only screen and (max-width: $bp-large){
+        grid-template-columns: [con1-start ] 1fr [con1-end calc-start ] minmax(29rem, 39vw ) [calc-end con2-start] 1fr[con2-end ] ;
+    }
+
+    @media only screen and (max-width: $bp-medium){
+        grid-template-columns: [con1-start ] 1fr [con1-end calc-start ] minmax(29rem, 60vw ) [calc-end con2-start] 1fr[con2-end ] ;
+    }
+    @media only screen and (max-width: $bp-small){
+        grid-template-columns: [con1-start ] 1fr [con1-end calc-start ] minmax(29rem, 80vw ) [calc-end con2-start] 1fr[con2-end ] ;
+    }
     
 }
 
@@ -85,6 +98,26 @@ body{
     border-radius: 25px;
     background-color: #363434;
     grid-gap: 8px;
+
+    @media only screen and (max-width: $bp-largest){
+        grid-template-columns: 1fr minmax(20rem, 60vw) 1fr;  
+      }
+
+      @media only screen and (max-width: $bp-large){
+        grid-template-columns: 1fr minmax(20rem, 55vw) 1fr;  
+      }
+
+    @media only screen and (max-width: $bp-medium){
+        grid-template-columns: 1fr minmax(20rem, 72vw) 1fr;  
+      }
+
+      @media only screen and (max-width: $bp-small){
+        grid-template-columns: 1fr minmax(20rem, 72vw) 1fr;  
+      }
+
+    
+
+
     }
 
 .calc-output{
@@ -114,6 +147,7 @@ body{
         }
         &__text{
             margin-top: 1rem;
+            transform: translateX(0px)
         }
     
         &__output-result{
@@ -128,6 +162,16 @@ body{
         &__output-resultTxt{
             font-size: 2.5rem;
             margin-top: 2rem;
+
+            @media only screen and (max-width: $bp-medium){
+                font-size: 2rem;
+              };
+              @media only screen and (max-width: $bp-large){
+                font-size: 2rem;
+              };
+            @media only screen and (max-width: $bp-small){
+                font-size: 1.8rem;
+              }
         }
     }
      
