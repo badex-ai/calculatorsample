@@ -8,8 +8,8 @@
     "devserver": "live-server",
     "start": "npm-run-all --parallel devserver watch:sass",
     "build:js": "webpack --mode=production",
-    "watch:js": "onchange \"src/js\" -- webpack --mode=development",
-    "CI= npm run build"
+    "watch:js": "onchange \"src/js\" -- webpack --mode=development"
+    
   },
   "author": "Badamasi Aliu",
   "license": "ISC",
