@@ -1,3 +1,5 @@
+
+
 //-----------------UI Controller
 let UIcontroller = (function(){
     let domStrings = {
@@ -25,7 +27,6 @@ let UIcontroller = (function(){
           return  document.querySelector(domStrings.historyOutput).innerText;
         },
         updateHistory:function(value){
-          // document.querySelector(domStrings.historyOutput).innerText= value;
 
           
 
@@ -48,13 +49,11 @@ let UIcontroller = (function(){
 
         moveInputLeft(){
           let outputFrame = document.querySelector(domStrings.historyOutput);
-        //  console.log('pressed');
+        
         let matrix = window.getComputedStyle(outputFrame).transform;
         const matrixValues = matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
         let translateValue = parseInt(matrixValues[4]);
-       // console.log(translateValue);
-         //console.log(outputFrame.currentStyle) ;
-        // let frameWidth =  window.getComputedStyle(textOutput).width;
+     
          if(translateValue == 0){return}
          else{ outputFrame.style.transform = `translateX(${translateValue + 10}px)`}
          
@@ -71,13 +70,9 @@ let UIcontroller = (function(){
          // let txtOutputWidth = window.getComputedStyle(textOutput).width;
           const matrixValues = matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
           let translateValue = parseInt(matrixValues[4]) ;
-        //  let matrix = window.getComputedStyle(outputFrame).transform;
-         // console.log(transLateValue);
          let outerFrame = parseInt(frameWidth.split("p")[0]);
          
-         //console.log(outerFrame);
-         //console.log(frameWidth);
-        // console.log(textOutputWidth);
+        
          let overflowdifference= textOutputWidth - outerFrame;
         //  console.log(overflowdifference);
         //  console.log((translateValue));
